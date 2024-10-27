@@ -1,10 +1,22 @@
 <template>
-    <p>component</p>
-    <button>Open</button>
+<h1>0</h1>
+    <button @click="increment()">+</button>
 </template>
 
-<script>
+<script >
+export default {
+    data() {
+        return {
+            count: 0
+        }
+    },
+    methods: {
+        increment() {
+            this.count += 1
 
+        }
+    }
+}
 </script>
 
 <style scoped>
