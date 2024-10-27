@@ -1,7 +1,9 @@
 
 <template>
-<h1>hello</h1>
-
+<div>
+  <h1>hello</h1>
+<p></p>
+</div>
 </template>
 
 <script setup>
