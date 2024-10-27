@@ -1,9 +1,11 @@
 <template>
-<h1>{{ count }}</h1>
-    <button @click="increment()">+</button>
+    <h1>{{ count }}</h1>
+    <button @click="increment">+</button>
+<br>
+    <input @input="upDataCount" type="text">
 </template>
 
-<script >
+<script>
 export default {
     data() {
         return {
@@ -14,11 +16,12 @@ export default {
         increment() {
             this.count += 1
 
+        },
+        upDataCount(event) {
+            this.count = event.target.value
         }
     }
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
