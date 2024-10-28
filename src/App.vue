@@ -1,9 +1,9 @@
 
 <template>
 <div class="bg-white w-4/5 m-auto h-screen rounded-xl shadow-xl mt-14">
-<header>
-  <div>
-    <img src="/logo.png" alt="logo">
+<header class="flex justify-between border-b border-slate-300 px-8">
+  <div class="flex items-center gap-4">
+    <img class="w-10" src="/logo.png" alt="logo">
     <div>
       <h2>REACT SNEAKERS</h2>
       <p>Магазин лучших кроссовок</p>
