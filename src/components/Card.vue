@@ -1,6 +1,6 @@
 <template>
     <div
-        class="relative m-10 border border-slate-100 rounded-3xl p-8 cursor-pointer hover:-translate-y-2 hover:shadow-xl transition">
+        class="relative bg-white border border-slate-100 rounded-3xl p-8 cursor-pointer hover:-translate-y-2 hover:shadow-xl transition">
         <img class="absolute top-8 left-8" src="/like-1.svg" alt="like">
         <img src="/sneakers/sneakers-1.jpg" alt="sneakers">
         <p class="mt-2">Мужские Кроссовки Nike Blazer Mid Suede</p>
@@ -13,3 +13,9 @@
         </div>
       </div>
 </template>
+
+<script setup>
+defineProps({
+  
+})
+</script>
