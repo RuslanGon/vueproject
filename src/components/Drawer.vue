@@ -15,7 +15,7 @@
         <b>1074 руб</b>
       </div>
     </div>
-    <button class="bg-lime-500 w-full rounded-xl py-3 text-white hover:bg-lime-600">Оформить заказ</button>
+    <button disabled="" class=" transition bg-lime-500 w-full rounded-xl py-3 text-white hover:bg-lime-600 active:bg-lime-700">Оформить заказ</button>
   </div>
 </template>
 
