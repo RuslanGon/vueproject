@@ -7,9 +7,9 @@
         <div class="flex justify-between mt-5">
           <div class="flex flex-col">
             <span class="text-slate-400">Цена</span>
-            <b>{{ price }}</b>
+            <b>{{ price }} руб</b>
           </div>
-          <img src="/plus.svg" alt="plus">
+          <img :src="!isAdded ? '/plus.svg' : '/checked.svg'" alt="plus">
         </div>
       </div>
 </template>
@@ -18,6 +18,8 @@
 defineProps({
   imageUrl: String,
   tittle: String,
-  price: Number
+  price: Number,
+  isFavorite: Boolean,
+  isAdded: Boolean
 })
 </script>
