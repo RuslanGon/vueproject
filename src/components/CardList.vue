@@ -5,11 +5,6 @@
     :price="5000"
     :onClickAdded="onClickAdded"
      />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
   </div>
 </template>
 
@@ -17,6 +12,6 @@
 import Card from './Card.vue';
 
 const onClickAdded = () => {
-  alert('Add')
+alert('add')
 }
 </script>
