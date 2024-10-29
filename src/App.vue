@@ -1,7 +1,21 @@
-
 <template>
   <div class="bg-white w-4/5 m-auto h-screen rounded-xl shadow-xl mt-14">
     <Header />
+    <div>
+      <div class="relative ">
+        <img class="absolute top-0 left-0" src="/like-1.svg" alt="like">
+        <img src="/sneakers/sneakers-1.jpg" alt="sneakers">
+        <p>Мужские Кроссовки Nike Blazer Mid Suede</p>
+        <div class="flex justify-between ">
+          <div class="flex flex-col">
+            <span class="text-slate-400">Цена</span>
+            <b>12 999 руб.</b>
+          </div>
+          <img src="/plus.svg" alt="plus">
+        </div>
+      </div>
+
+    </div>
   </div>
 </template>
 
@@ -11,6 +25,4 @@ import Header from './components/Header.vue';
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
