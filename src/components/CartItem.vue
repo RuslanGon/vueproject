@@ -3,9 +3,9 @@
         <img class="w-16 h-16" src="/sneakers/sneakers-1.jpg" alt="sneakers">
         <div class="flex  flex-col">
             <p>Мужские Кроссовки <br> Nike Air Max 270</p>
-            <div class="flex justify-between mt-3">
+            <div class="flex justify-between mt-3 ">
                 <b>12999 руб</b>
-                <img src="/close.svg" alt="">
+                <img class="opacity-40  hover:opacity-100 cursor-pointer transition" src="/close.svg" alt="">
             </div>
         </div>
     </div>
