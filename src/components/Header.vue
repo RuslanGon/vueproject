@@ -22,5 +22,6 @@
         <img src="/profile.svg" alt="cart"><span>Профиль</span>
       </li>
     </ul>
+    
   </header>
 </template>
