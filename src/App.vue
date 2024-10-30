@@ -18,7 +18,9 @@
         </div>
         </div>
       </div>
+      <div class="mt-10">
       <CardList :items="items" />
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +30,7 @@ import Header from './components/Header.vue';
 import Card from './components/Card.vue';
 import CardList from './components/CardList.vue';
 import Drawer from './components/Drawer.vue';
+import { onMounted } from 'vue';
 
 const items = [
     {
@@ -554,6 +557,10 @@ const items = [
     "id": 19
   }
 ]
+
+onMounted(() => {
+  
+})
 
 </script>
 
