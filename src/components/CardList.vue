@@ -20,7 +20,7 @@ const onClickAdded = () => {
 <template>
   <div class="grid grid-cols-4 gap-5">
     <Card 
-      v-for="item in filteredItems.slice(0, 16)" 
+      v-for="item in filteredItems.slice(0, 12)" 
       :key="item.id"
       :title="item.title" 
       :imageUrl="item.imageUrl" 

@@ -30,7 +30,9 @@ import Header from './components/Header.vue';
 import Card from './components/Card.vue';
 import CardList from './components/CardList.vue';
 import Drawer from './components/Drawer.vue';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+import axios from 'axios';
+import { data } from 'autoprefixer';
 
 const items = [
     {
@@ -558,9 +560,15 @@ const items = [
   }
 ]
 
-onMounted(() => {
-  
-})
+// const items = ref([])
+// onMounted(async () => {
+//   try {
+//     const {data} = await axios.get('https://mokky.dev/')
+//     items.value = data
+//   } catch (error) {
+//     console.log(error);
+//   }
+// })
 
 </script>
 
