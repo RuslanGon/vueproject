@@ -11,7 +11,7 @@
     <ul class="flex items-center gap-10 text-slate-500">
       <li
         class="flex items-center gap-3 hover:text-black cursor-pointer transform hover:scale-105 transition duration-200">
-        <img src="/cart.svg" alt="cart"><span>1205 руб</span>
+        <img src="/cart.svg" alt="cart"><span>1205 грн</span>
       </li>
       <li
         class="flex items-center gap-3 hover:text-black cursor-pointer transform hover:scale-105 transition duration-200">
