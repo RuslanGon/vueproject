@@ -6,20 +6,20 @@
       <div class="flex justify-between items-center">
         <h2 class="text-3xl font-bold mb-8">Все кроссовки</h2>
         <div class="flex gap-4">
-          <select class="py-2 px-3 border rounded-md outline-none">
-          <option>По названию</option>
-          <option>По цене (дешевая)</option>
-          <option>По цене (дорогая)</option>
-        </select>
+          <select v-model="sortBy" class="py-2 px-3 border rounded-md outline-none">
+            <option value="">По названию</option>
+            <option value="priceAsc">По цене (дешевая)</option>
+            <option value="priceDesc">По цене (дорогая)</option>
+          </select>
 
-        <div class="relative">
-          <img class="absolute left-4 top-3" src="/search.svg" alt="">
-          <input v-model="searchQuery" class="border rounded-md py-2 pl-10 pr-4 outline-none focus:border-gray-400" placeholder="Поиск...">
-        </div>
+          <div class="relative">
+            <img class="absolute left-4 top-3" src="/search.svg" alt="">
+            <input v-model="searchQuery" class="border rounded-md py-2 pl-10 pr-4 outline-none focus:border-gray-400" placeholder="Поиск...">
+          </div>
         </div>
       </div>
       <div class="mt-10">
-      <CardList :items="filteredItems" />
+        <CardList :items="filteredItems" />
       </div>
     </div>
   </div>
@@ -27,12 +27,8 @@
 
 <script setup>
 import Header from './components/Header.vue';
-import Card from './components/Card.vue';
 import CardList from './components/CardList.vue';
-import Drawer from './components/Drawer.vue';
-import { computed, onMounted, ref, watch } from 'vue';
-import axios from 'axios';
-import { data } from 'autoprefixer';
+import { computed, ref } from 'vue';
 
 const items = ref([
   {
@@ -109,25 +105,26 @@ const items = ref([
   }
 ]);
 
-// const items = ref([])
-// onMounted(async () => {
-//   try {
-//     const {data} = await axios.get('https://mokky.dev/')
-//     items.value = data
-//   } catch (error) {
-//     console.log(error);
-//   }
-// })
-
 const searchQuery = ref('');
 const sortBy = ref('');
 
 const filteredItems = computed(() => {
-  return items.value.filter(item =>
+  let filtered = items.value.filter(item =>
     item.title.toLowerCase().includes(searchQuery.value.toLowerCase())
   );
-});
 
+  // Сортировка
+  if (sortBy.value === 'priceAsc') {
+    filtered.sort((a, b) => a.price - b.price);
+  } else if (sortBy.value === 'priceDesc') {
+    filtered.sort((a, b) => b.price - a.price);
+  } else {
+    // Сортировка по названию (по умолчанию)
+    filtered.sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  return filtered;
+});
 </script>
 
 <style scoped>
