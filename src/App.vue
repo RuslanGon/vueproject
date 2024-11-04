@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="mt-10">
-        <CardList :items="filteredItems" />
+        <CardList :items="filteredItems" @addToFavorite="addToFavorite"/>
       </div>
     </div>
   </div>
@@ -145,7 +145,7 @@ const addToFavorite = (item) => {
   console.log(item);
 }
 
-provide('addToFavorite', addToFavorite)
+// provide('addToFavorite', addToFavorite)
 </script>
 
 <style scoped>
