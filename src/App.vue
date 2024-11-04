@@ -141,8 +141,8 @@ await fetchFavorites()
 })
 
 const addToFavorite = (item) => {
-  item.isFavorite = true
-  console.log('item');
+  item.isFavorite = !item.isFavorite
+  console.log(item);
 }
 
 provide('addToFavorite', addToFavorite)
