@@ -27,7 +27,7 @@
 <script setup>
 import Header from './components/Header.vue';
 import CardList from './components/CardList.vue';
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, provide, ref } from 'vue';
 
 const items = ref([
   {
@@ -106,6 +106,7 @@ const items = ref([
 
 const searchQuery = ref('');
 const sortBy = ref('');
+const favorites = ref([])
 
 const filteredItems = computed(() => {
   let filtered = items.value.filter(item =>
@@ -139,9 +140,12 @@ onMounted(async() => {
 await fetchFavorites()
 })
 
-const addToFavorite = () => {
-  
+const addToFavorite = (item) => {
+  item.isFavorite = true
+  console.log('item');
 }
+
+provide('addToFavorite', addToFavorite)
 </script>
 
 <style scoped>
