@@ -138,6 +138,10 @@ const fetchFavorites = () => {
 onMounted(async() => {
 await fetchFavorites()
 })
+
+const addToFavorite = () => {
+  
+}
 </script>
 
 <style scoped>
