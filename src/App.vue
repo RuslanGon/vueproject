@@ -106,7 +106,24 @@ const items = ref([
 
 const searchQuery = ref('');
 const sortBy = ref('');
-const favorites = ref([])
+const favorites = ref([]);
+
+// Загружаем избранные элементы из localStorage при загрузке
+const loadFavoritesFromStorage = () => {
+  const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  favorites.value = storedFavorites;
+
+  // Применяем состояние избранного к items
+  items.value = items.value.map(item => ({
+    ...item,
+    isFavorite: !!favorites.value.find(fav => fav.id === item.id),
+  }));
+};
+
+// Сохранение избранных элементов в localStorage
+const saveFavoritesToStorage = () => {
+  localStorage.setItem('favorites', JSON.stringify(favorites.value));
+};
 
 const filteredItems = computed(() => {
   let filtered = items.value.filter(item =>
@@ -126,24 +143,22 @@ const filteredItems = computed(() => {
   return filtered;
 });
 
-
-const fetchFavorites = () => {
-  items.value = items.value.map(item => {
-    const favorite = favorites.value.find(fav => fav.parentId === item.id);
-    return {
-      ...item,
-      isFavorite: favorite ? favorite.isFavorite : false,
-    };
-  });
-};
-onMounted(async() => {
-await fetchFavorites()
-})
-
 const addToFavorite = (item) => {
-  item.isFavorite = !item.isFavorite
+  item.isFavorite = !item.isFavorite;
+  if (item.isFavorite) {
+    favorites.value.push({ id: item.id });
+  } else {
+    favorites.value = favorites.value.filter(fav => fav.id !== item.id);
+  }
+  saveFavoritesToStorage();
   console.log(item);
-}
+};
+
+// Загружаем избранные элементы при загрузке компонента
+onMounted(() => {
+  loadFavoritesFromStorage();
+});
+
 
 // provide('addToFavorite', addToFavorite)
 </script>
