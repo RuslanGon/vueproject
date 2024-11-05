@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="mt-10">
-        <CardList :items="filteredItems" @addToFavorite="addToFavorite"/>
+        <CardList :items="filteredItems" @addToFavorite="addToFavorite" @toAddCart="toAddCart"/>
       </div>
     </div>
   </div>
@@ -109,7 +109,25 @@ const draverOpen = ref(false)
 const searchQuery = ref('');
 const sortBy = ref('');
 const favorites = ref([]);
+const cart = ref([])
 
+// Добовления товара в корзину
+const toAddCart = (item) => {
+  // Проверяем, добавлен ли товар в корзину
+  if (!item.isAdded) {
+    cart.value.push(item);       // Добавляем товар в корзину
+    item.isAdded = true;          // Устанавливаем флаг, что товар добавлен
+  } else {
+    const index = cart.value.indexOf(item);  // Находим индекс товара в корзине
+    if (index > -1) {
+      cart.value.splice(index, 1); // Удаляем товар из корзины по индексу
+      item.isAdded = false;        // Сбрасываем флаг, что товар удален
+    }
+  }
+  console.log(cart);
+};
+
+// Открываем и закрывем карзину
 const closeDrawer = () => {
   draverOpen.value = false
 }

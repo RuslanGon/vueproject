@@ -13,7 +13,7 @@ console.log('Received items:', props.items);
 //   emit('addToFavorite', item)
 // }
 
-const emit = defineEmits(['addToFavorite'])
+const emit = defineEmits(['addToFavorite', 'toAddCart'])
 
 
 // const addToFavorite = inject('addToFavorite')
@@ -27,10 +27,12 @@ const emit = defineEmits(['addToFavorite'])
       :key="item.id"
       :id="item.id"
       :onClickFavorite="() => emit('addToFavorite', item)"
+      :onClickAdded="() => emit('toAddCart', item)"
       :title="item.title" 
       :imageUrl="item.imageUrl" 
       :price="item.price"
       :isFavorite="item.isFavorite"
+      :isAdded="item.isAdded"
     />
   </div>
 </template>
