@@ -189,7 +189,7 @@ onMounted(() => {
 
 
 // provide('addToFavorite', addToFavorite)
-provide('cardActions', { closeDrawer, openDrawer })
+provide('cart', {cart, closeDrawer, openDrawer })
 
 </script>
 
