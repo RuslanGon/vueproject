@@ -38,7 +38,7 @@ defineProps({
 
 <style scoped>
 .cart-container {
-  height: calc(100vh - 2rem - 2rem); /* Установка высоты для всей корзины с учетом отступов */
-  overflow-y: auto; /* Включение вертикальной прокрутки */
+  height: calc(100vh - 2rem - 2rem); 
+  overflow-y: auto; 
 }
 </style>
