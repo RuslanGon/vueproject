@@ -5,7 +5,7 @@
             <p>{{ title }}</p>
             <div class="flex justify-between mt-3 ">
                 <b>{{ price }}</b>
-                <img class="opacity-40  hover:opacity-100 cursor-pointer transition" src="/close.svg" alt="">
+                <img @click="emit('removeFromCard')" class="opacity-40  hover:opacity-100 cursor-pointer transition" src="/close.svg" alt="">
             </div>
         </div>
     </div>
@@ -18,4 +18,6 @@ defineProps({
     title: String,
     price: Number,
 })
+
+const emit = defineEmits('removeFromCard')
 </script>
