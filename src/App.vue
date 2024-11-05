@@ -1,5 +1,5 @@
 <template>
-  <Drawer v-if="draverOpen"/>
+  <Drawer v-if="draverOpen" :totalPrice="totalPrice" :vatPrice="vatPrice"/>
   <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl mt-14">
     <Header :totalPrice="totalPrice" @openDrawer="openDrawer"/>
     <div class="p-10">
@@ -195,13 +195,18 @@ onMounted(() => {
 });
 
 // Общая цена
-const totalPrice = computed(
-  () => cart.value.reduce((acc, item) => acc + item.price, 0 )
-)
+const totalPrice = computed(() => cart.value.reduce((acc, item) => acc + item.price, 0 ))
+
+// Налог 5 %
+const vatPrice = computed(() => Math.round((totalPrice.value * 5) / 100))
 
 // provide('addToFavorite', addToFavorite)
 provide('cart', {cart, closeDrawer, openDrawer, toAddCart, removeFromCard })
 
+// Оформление заказа
+const createOrder = () => {
+  
+}
 </script>
 
 <style scoped>
