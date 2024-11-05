@@ -11,7 +11,7 @@
     <ul class="flex items-center gap-10 text-slate-500">
       <li @click="() => emit('openDrawer')"
         class="flex items-center gap-3 hover:text-black cursor-pointer transform hover:scale-105 transition duration-200">
-        <img src="/cart.svg" alt="cart"><span>1205 грн</span>
+        <img src="/cart.svg" alt="cart"><span>{{ totalPrice }} грн</span>
       </li>
       <li
         class="flex items-center gap-3 hover:text-black cursor-pointer transform hover:scale-105 transition duration-200">
@@ -28,4 +28,7 @@
 
 <script setup>
 const emit = defineEmits(['openDrawer'])
+defineProps({
+  totalPrice: Number
+})
 </script>

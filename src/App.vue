@@ -1,7 +1,7 @@
 <template>
   <Drawer v-if="draverOpen"/>
   <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl mt-14">
-    <Header @openDrawer="openDrawer"/>
+    <Header :totalPrice="totalPrice" @openDrawer="openDrawer"/>
     <div class="p-10">
       <div class="flex justify-between items-center">
         <h2 class="text-3xl font-bold mb-8">Все кроссовки</h2>
@@ -194,6 +194,10 @@ onMounted(() => {
   loadFavoritesFromStorage();
 });
 
+// Общая цена
+const totalPrice = computed(
+  () => cart.value.reduce((acc, item) => acc + item.price, 0 )
+)
 
 // provide('addToFavorite', addToFavorite)
 provide('cart', {cart, closeDrawer, openDrawer, toAddCart, removeFromCard })
