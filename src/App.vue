@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="mt-10">
-        <CardList :items="filteredItems" @addToFavorite="addToFavorite" @toAddCart="toAddCart"/>
+        <CardList :items="filteredItems" @addToFavorite="addToFavorite" @toAddCart="onClickAddPlus"/>
       </div>
     </div>
   </div>
@@ -111,18 +111,25 @@ const sortBy = ref('');
 const favorites = ref([]);
 const cart = ref([])
 
-// Добовления товара в корзину
+
 const toAddCart = (item) => {
-  // Проверяем, добавлен ли товар в корзину
-  if (!item.isAdded) {
-    cart.value.push(item);       // Добавляем товар в корзину
-    item.isAdded = true;          // Устанавливаем флаг, что товар добавлен
-  } else {
-    const index = cart.value.indexOf(item);  // Находим индекс товара в корзине
+  cart.value.push(item);       
+    item.isAdded = true;  
+}
+
+const removeFromCard = (item) => {
+  const index = cart.value.indexOf(item);  
     if (index > -1) {
-      cart.value.splice(index, 1); // Удаляем товар из корзины по индексу
-      item.isAdded = false;        // Сбрасываем флаг, что товар удален
+      cart.value.splice(index, 1); 
+      item.isAdded = false;        
     }
+}
+
+const onClickAddPlus = (item) => {
+  if (!item.isAdded) {
+    toAddCart(item) 
+  } else {
+    removeFromCard(item)
   }
   console.log(cart);
 };
@@ -189,7 +196,7 @@ onMounted(() => {
 
 
 // provide('addToFavorite', addToFavorite)
-provide('cart', {cart, closeDrawer, openDrawer })
+provide('cart', {cart, closeDrawer, openDrawer, toAddCart, removeFromCard })
 
 </script>
 
