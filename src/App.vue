@@ -28,7 +28,7 @@
 import Drawer from './components/Drawer.vue';
 import Header from './components/Header.vue';
 import CardList from './components/CardList.vue';
-import { computed, onMounted, provide, ref } from 'vue';
+import { computed, onMounted, provide, ref, watch } from 'vue';
 
 const items = ref([
   {
@@ -221,16 +221,30 @@ const createOrder = () => {
 
     console.log('Создан заказ:', order);
     
-
-    
-    // Очистка корзины реактивным способом
+    // Очистка корзины
     cart.value.splice(0, cart.value.length);
     
+    // Очистка избранных товаров
+    favorites.value = [];
+    
+    // Сбрасываем флаги isAdded и isFavorite для всех товаров
+    items.value = items.value.map(item => ({
+      ...item,
+      isAdded: false,
+      isFavorite: false,
+    }));
+    
+    // Обновляем localStorage
+    localStorage.setItem('favorites', JSON.stringify(favorites.value));
+
+    // Возвращаем заказ
     return order;
   } catch (error) {
     console.log('Ошибка при создании заказа:', error);
   }
 };
+
+
 
 </script>
 
