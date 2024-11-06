@@ -1,5 +1,5 @@
 <template>
-  <Drawer v-if="draverOpen" :totalPrice="totalPrice" :vatPrice="vatPrice"/>
+  <Drawer v-if="draverOpen" :totalPrice="totalPrice" :vatPrice="vatPrice" :order="order" @order="createOrder"/>
   <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl mt-14">
     <Header :totalPrice="totalPrice" @openDrawer="openDrawer"/>
     <div class="p-10">
@@ -110,7 +110,7 @@ const searchQuery = ref('');
 const sortBy = ref('');
 const favorites = ref([]);
 const cart = ref([])
-
+const order = ref(null); 
 
 const toAddCart = (item) => {
   cart.value.push(item);       
@@ -204,9 +204,34 @@ const vatPrice = computed(() => Math.round((totalPrice.value * 5) / 100))
 provide('cart', {cart, closeDrawer, openDrawer, toAddCart, removeFromCard })
 
 // Оформление заказа
+
 const createOrder = () => {
-  
-}
+  try {
+    const orderItems = cart.value.map(item => ({
+      id: item.id,
+      title: item.title,
+      price: item.price,
+      imageUrl: item.imageUrl,
+    }));
+    
+    const order = {
+      items: orderItems,
+      totalPrice: totalPrice.value,
+    };
+
+    console.log('Создан заказ:', order);
+    
+
+    
+    // Очистка корзины реактивным способом
+    cart.value.splice(0, cart.value.length);
+    
+    return order;
+  } catch (error) {
+    console.log('Ошибка при создании заказа:', error);
+  }
+};
+
 </script>
 
 <style scoped>
