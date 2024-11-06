@@ -6,7 +6,7 @@
     <div class="cart-container flex-1 overflow-y-auto">
       <CartItemList />
     </div>
-    <div class="flex flex-col gap-3 mt-7">
+    <div v-if="totalPrice === 0" class="flex flex-col gap-3 mt-7">
       <div class="flex gap-2">
         <span>Итого:</span>
         <div class="flex-1 border-b border-dashed"></div>
