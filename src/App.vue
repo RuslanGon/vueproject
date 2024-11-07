@@ -3,6 +3,7 @@
   <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl mt-14">
     <Header :totalPrice="totalPrice" @openDrawer="openDrawer"/>
     <div class="p-10">
+      <img class="mb-7" src="/main.png" alt="">
       <div class="flex justify-between items-center">
         <h2 class="text-3xl font-bold mb-8">Все кроссовки</h2>
         <div class="flex gap-4">
